@@ -66,8 +66,8 @@ class Login extends Component<any, any>{
 
                             <div className="row">
                                 <div className="col">
-                                    <button  className="btn btn-link float-left">Forget Password</button>
-                                    <button  className="btn btn-link float-right">Register</button>
+                                    <button onClick={this.props.handleGoToEmailReminder} className="btn btn-link float-left">Forget Password</button>
+                                    <button onClick={this.props.handleGoToRegister} className="btn btn-link float-right">Register</button>
                                 </div>
                             </div>
                          
