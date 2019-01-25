@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
-import './Login.css';
-import LoginService from '../../services/LoginService'
+import LoginService from '../../../../services/LoginService'
 
-class Login extends Component<any, any>{
+class RegisterView extends Component<any, any>{
     constructor(props: any){
         super(props);
 
         this.state= {
             currentEmail: "",
             currentPassword: "",
-            currentMessage: "Please enter something",
+            repeatedPassword: "",
+            currentMessage: undefined,
         }
     }
 
-    handleTryLogIn = async () => {
+    handleTryRegister = async () => {
+
+        if(this.state.currentPassword !== this.state.repeatedPassword) {
+            this.setState( { currentMessage: "Passwords do not match" });
+            return;
+        }
 
         const loginService = new LoginService();
-        const result = await loginService.tryLogin(this.state.currentEmail, this.state.currentPassword );
+        const registerResult = await loginService.tryRegister(this.state.currentEmail, this.state.currentPassword );
 
-        if( result.success ) {
-            this.props.handleLogIn(this.state.currentEmail);
-        } else {
-            this.setState( { currentMessage: result.message });
+        if( !registerResult.success ) {
+            this.setState( { currentMessage: registerResult.message });
+            return;
         }
+
+        const loginResult = await loginService.tryLogin(this.state.currentEmail, this.state.currentPassword );
+        if( !loginResult.success ) {
+            this.setState( { currentMessage: loginResult.message });
+            return;
+        }
+        this.props.handleLogIn(this.state.currentEmail);
     }
 
     render() {
@@ -30,7 +41,7 @@ class Login extends Component<any, any>{
             <div className="login">
                 <div className="card">
                     <div className="card-header">
-                        <h5>Login</h5>
+                        <h5>Create account</h5>
                     </div>
                     <div className="card-body">
                         <div className="container">
@@ -53,15 +64,25 @@ class Login extends Component<any, any>{
 
                             </div>
                             <div className="row">
+                                <div className="col-4">
+                                    Repeat password
+                                </div>
                                 <div className="col">
-                                    <button onClick={ this.handleTryLogIn} className="btn btn-link float-right">Login</button>
+                                    <input type="password" className="form-control" placeholder="Please repeat the password" value={this.state.repeatedPassword} onChange={ (event) => { this.setState ({ repeatedPassword: event.target.value}) }}/>
+                                </div>
+
+                            </div>                            
+                            <div className="row">
+                                <div className="col">
+                                    <button onClick={ this.handleTryRegister } className="btn btn-link float-right">Create account</button>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col">
+                                    { this.state.currentMessage ? 
                                     <div className="alert alert-danger" role="alert">
                                         {this.state.currentMessage}
-                                    </div>
+                                    </div> : "" }
                                 </div>
                             </div>
                         </div>
@@ -72,4 +93,4 @@ class Login extends Component<any, any>{
     }
 }
 
-export default Login;
+export default RegisterView;

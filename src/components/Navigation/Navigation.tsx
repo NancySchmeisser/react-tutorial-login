@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Sessioninfo from '../Sessioninfo/Sessioninfo';
-
+import Sessioninfo from './Sessioninfo/Sessioninfo';
 
 class Navigation extends Component <any,any> {
     render() {
