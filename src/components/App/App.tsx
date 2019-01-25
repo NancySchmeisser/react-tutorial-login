@@ -11,7 +11,7 @@ class App extends Component <any,any> {
     }
   }
 
-  logout=() => {
+  handleLogout=() => {
     this.setState({session:null})
   }
   
@@ -29,7 +29,7 @@ class App extends Component <any,any> {
   render() {
     return (
       <div className="App">
-       <Navigation session={this.state.session} onLogOut={this.logout}/>
+       <Navigation session={this.state.session} handleLogout={this.handleLogout}/>
        <Main session={this.state.session} handleLogIn={this.handleLogIn}/>
 
          

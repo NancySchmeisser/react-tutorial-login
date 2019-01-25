@@ -19,7 +19,7 @@ class Navigation extends Component <any,any> {
                        
                     </ul>
                 </div>
-                <Sessioninfo session={this.props.session} onLogOut={this.props.onLogOut}/>
+                <Sessioninfo session={this.props.session} handleLogout={this.props.handleLogout}/>
             </nav>
         );
     }

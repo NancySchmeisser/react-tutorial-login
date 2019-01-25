@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { timingSafeEqual } from 'crypto';
+import LoginService from '../../services/LoginService'
 
 class Login extends Component<any, any>{
     constructor(props: any){
@@ -13,12 +13,15 @@ class Login extends Component<any, any>{
         }
     }
 
-    handleTryLogIn = () => {
+    handleTryLogIn = async () => {
 
-        if( this.state.currentEmail === "nancy" && this.state.currentPassword === "nancy") {
+        const loginService = new LoginService();
+        const result = await loginService.tryLogin(this.state.currentEmail, this.state.currentPassword );
+
+        if( result.success ) {
             this.props.handleLogIn(this.state.currentEmail);
         } else {
-            this.setState( { currentMessage: "Wrong username or password" });
+            this.setState( { currentMessage: result.message });
         }
     }
 
