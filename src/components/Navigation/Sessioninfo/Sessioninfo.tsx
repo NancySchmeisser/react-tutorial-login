@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginService from '../../../services/LoginService';
-
+import './SessionInfo.css';
 
 class Sessioninfo extends Component <any,any>{
 
@@ -17,14 +17,13 @@ class Sessioninfo extends Component <any,any>{
         if (this.props.session){
             return (
                 <div className="Sessioninfo">
-            {this.props.session.currentUser}
-                <button onClick={this.handleLogout}className="btn btn-link">Logout</button>
+                <button onClick={this.handleLogout} className="logoutButton btn btn-link logoutButton">Logout {this.props.session.currentUser}</button>
                 </div>
             );
         } else {
             return (
                 <div className="Sessioninfo">
-              Sessioninfo - logged out
+                    not logged in
                 </div>
             );
         }

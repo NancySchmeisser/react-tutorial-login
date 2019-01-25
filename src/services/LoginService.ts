@@ -14,7 +14,7 @@ export default class LoginService{
         return await (await fetch(`${Config.ApiUrl}register`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, password }) })).json();
     }
 
-    public async trySendEmailReminder(email: string) : Promise<{ success: boolean, email: string, message: string }>{
+    public async trySendEmailReminder(email: string) : Promise<{ success: boolean, email: string, password: string, message: string }>{
         return await (await fetch(`${Config.ApiUrl}sendEmailReminder`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) })).json();
     }
 }

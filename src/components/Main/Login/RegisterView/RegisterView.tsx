@@ -74,7 +74,7 @@ class RegisterView extends Component<any, any>{
                             </div>                            
                             <div className="row">
                                 <div className="col">
-                                    <button onClick={ this.handleTryRegister } className="btn btn-link float-right">Create account</button>
+                                    <button onClick={ this.handleTryRegister } className="btn btn-primary float-right">Create account</button>
                                 </div>
                             </div>
                             <div className="row">
@@ -87,8 +87,8 @@ class RegisterView extends Component<any, any>{
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <button className="btn btn-link float-left" onClick={ ()=>this.props.handleGoto("LoginView")}>Login</button>
-                                    <button className="btn btn-link float-right" onClick={ ()=>this.props.handleGoto("SendEmailReminderView")}>Forgot email</button>
+                                    <button className="btn btn-link text-secondary float-left" onClick={ ()=>this.props.handleGoto("LoginView")}>Login</button>
+                                    <button className="btn btn-link text-secondary float-right" onClick={ ()=>this.props.handleGoto("SendEmailReminderView")}>Forgot email</button>
                                 </div>
                             </div>
                         </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Login.css';
 import LoginView from './LoginView/LoginView';
 import RegisterView from './RegisterView/RegisterView';
+import EmailReminderView from './EmailReminderView/EmailReminderView';
 
 class Login extends Component<any, any>{
 
@@ -22,7 +23,7 @@ class Login extends Component<any, any>{
                 this.setState({ currentView : <RegisterView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto}/> })
                 break;
             case "SendEmailReminderView":
-                this.setState({ currentView : <RegisterView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto}/> })
+                this.setState({ currentView : <EmailReminderView handleGoto={this.handleGoto}/> })
                 break;
         }
     }

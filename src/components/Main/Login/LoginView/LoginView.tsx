@@ -53,7 +53,14 @@ class LoginView extends Component<any, any>{
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <button onClick={ this.handleTryLogIn} className="btn btn-link float-right">Login</button>
+                                    <button onClick={ this.handleTryLogIn} className="btn btn-primary float-right">Login</button>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <hr style={{height: "1px"}} />
+                                    <button className="btn btn-link text-secondary float-left" onClick={ ()=>this.props.handleGoto("RegisterView")}>Create account</button>
+                                    <button className="btn btn-link text-secondary float-right" onClick={ ()=>this.props.handleGoto("SendEmailReminderView")}>Forgot email</button>
                                 </div>
                             </div>
                             <div className="row">
@@ -62,12 +69,6 @@ class LoginView extends Component<any, any>{
                                     <div className="alert alert-danger" role="alert">
                                         {this.state.currentMessage}
                                     </div> : "" }
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    <button className="btn btn-link float-left" onClick={ ()=>this.props.handleGoto("RegisterView")}>Create account</button>
-                                    <button className="btn btn-link float-right" onClick={ ()=>this.props.handleGoto("SendEmailReminderView")}>Forgot email</button>
                                 </div>
                             </div>
                         </div>
