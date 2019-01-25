@@ -13,9 +13,7 @@ class Main extends Component <any,any>{
         } else {
             return (
             <Login session={this.props.session} handleLogIn={this.props.handleLogIn}/>)
-
         }
-      
     }
 }
 

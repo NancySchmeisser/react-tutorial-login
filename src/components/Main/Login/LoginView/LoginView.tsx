@@ -64,6 +64,12 @@ class LoginView extends Component<any, any>{
                                     </div> : "" }
                                 </div>
                             </div>
+                            <div className="row">
+                                <div className="col">
+                                    <button className="btn btn-link float-left" onClick={ ()=>this.props.handleGoto("RegisterView")}>Create account</button>
+                                    <button className="btn btn-link float-right" onClick={ ()=>this.props.handleGoto("SendEmailReminderView")}>Forgot email</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

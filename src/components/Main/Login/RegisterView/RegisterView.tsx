@@ -41,7 +41,7 @@ class RegisterView extends Component<any, any>{
             <div className="login">
                 <div className="card">
                     <div className="card-header">
-                        <h5>Create account</h5>
+                        <h5>Create a new account</h5>
                     </div>
                     <div className="card-body">
                         <div className="container">
@@ -83,6 +83,12 @@ class RegisterView extends Component<any, any>{
                                     <div className="alert alert-danger" role="alert">
                                         {this.state.currentMessage}
                                     </div> : "" }
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <button className="btn btn-link float-left" onClick={ ()=>this.props.handleGoto("LoginView")}>Login</button>
+                                    <button className="btn btn-link float-right" onClick={ ()=>this.props.handleGoto("SendEmailReminderView")}>Forgot email</button>
                                 </div>
                             </div>
                         </div>

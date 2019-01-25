@@ -4,12 +4,31 @@ import LoginView from './LoginView/LoginView';
 import RegisterView from './RegisterView/RegisterView';
 
 class Login extends Component<any, any>{
+
+
     constructor(props: any){
         super(props);
+        this.state = {
+            currentView :  <LoginView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto} />
+        }
+    }
+
+    handleGoto =  (view: string) => {
+        switch(view) {
+            case "LoginView":
+                this.setState({ currentView : <LoginView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto} /> })
+                break;
+            case "RegisterView":
+                this.setState({ currentView : <RegisterView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto}/> })
+                break;
+            case "SendEmailReminderView":
+                this.setState({ currentView : <RegisterView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto}/> })
+                break;
+        }
     }
 
     render() {
-        return ( <RegisterView handleLogIn={this.props.handleLogIn}/>) ;
+        return this.state.currentView;
     }
 }
 
