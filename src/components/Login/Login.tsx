@@ -47,13 +47,14 @@ class Login extends Component<any, any>{
                                 <div className="col">
                                     <input type="password" className="form-control" placeholder="Please enter password" value={this.state.currentPassword} onChange={ (event) => { this.setState ({ currentPassword: event.target.value}) }}/>
                                 </div>
+                                </div>
 
-                            </div>
                             <div className="row">
                                 <div className="col">
                                     <button onClick={ this.handleTryLogIn} className="btn btn-link float-right">Login</button>
                                 </div>
                             </div>
+
                             <div className="row">
                                 <div className="col">
                                     <div className="alert alert-danger" role="alert">
@@ -61,6 +62,15 @@ class Login extends Component<any, any>{
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="row">
+                                <div className="col">
+                                    <button  className="btn btn-link float-left">Forget Password</button>
+                                    <button  className="btn btn-link float-right">Register</button>
+                                </div>
+                            </div>
+                         
+
                         </div>
                     </div>
                 </div>
