@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Home';
-import { any } from 'prop-types';
+import Login from './Login';
 
 it('renders without crashing', () => {
-
-  const fakeSession: any = { currentUser: "Test" }
   const div = document.createElement('div');
-  ReactDOM.render(<Home session={fakeSession}/>, div);
+  ReactDOM.render(<Login />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

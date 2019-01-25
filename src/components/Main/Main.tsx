@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import Login from '../Login/Login';
+import Home from '../Home/Home';
 
 
-class Main extends Component {
+class Main extends Component <any,any>{
     render() {
-        return (
-            <div className="Main">
-                <h1>Guten Tag!</h1>
-            </div>
-        );
+        if (this.props.session) {
+            return (
+                <Home session={this.props.session} />
+            );
+            
+        } else {
+            return (
+            <Login session={this.props.session} handleLogIn={this.props.handleLogIn}/>)
+
+        }
+      
     }
 }
 

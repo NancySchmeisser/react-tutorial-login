@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Sessioninfo from '../Sessioninfo/Sessioninfo';
 
 
-class Navigation extends Component {
+class Navigation extends Component <any,any> {
     render() {
         return (
 
@@ -16,11 +16,10 @@ class Navigation extends Component {
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                         </li>
-                        <li className="nav-item">
-                            <Sessioninfo/>
-                        </li>
+                       
                     </ul>
                 </div>
+                <Sessioninfo session={this.props.session} onLogOut={this.props.onLogOut}/>
             </nav>
         );
     }
