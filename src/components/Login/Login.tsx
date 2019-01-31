@@ -8,9 +8,7 @@ class Login extends Component<any, any>{
         super(props);
 
         this.state= {
-            currentEmail: "",
-            currentPassword: "",
-            currentMessage: "Please enter something",
+           currentView: <LoginView handleLogIn={this.props.handleLogIn} handleGoto={this.handleGoto} />
         }
     }
 
