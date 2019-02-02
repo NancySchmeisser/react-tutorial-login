@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { timingSafeEqual } from 'crypto';
-import Register from '../Register/Register';
+import LoginView from './LoginView/LoginView';
+import RegisterView from './RegisterView/RegisterView';
+import EmailReminderView from './EmailReminderView/EmailReminderView';
 
 class Login extends Component<any, any>{
     constructor(props: any){
