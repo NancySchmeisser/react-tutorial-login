@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoinService from '../../../../services/LoginService'
+import LoginService from '../../../../services/LoginService'
 import { any } from 'prop-types';
 
 class LoginView extends Component<any, any>{
@@ -14,8 +14,8 @@ class LoginView extends Component<any, any>{
     }
     handleTryLogIn = async () => {
 
-        const LoginService = new LoginService();
-        const result = await LoginService.tryLogin(this.state.currentEmail, this.state.currentPassword);
+        const loginService = new LoginService();
+        const result = await loginService.tryLogin(this.state.currentEmail, this.state.currentPassword);
 
         if (result.success) {
             this.props.handleLogIn(this.state.currentEmail);

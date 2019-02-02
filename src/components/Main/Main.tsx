@@ -1,34 +1,9 @@
 import React, { Component } from 'react';
-import Login from '../Login/Login';
-import Home from '../Home/Home';
-import Register from '../Register/Register';
+import Login from './Login';
+import Home from './Home';
 
 
 class Main extends Component <any,any>{
-
-    constructor(props: any) {
-        super(props)
-        this.state={
-            loginView:  <Login session={this.props.session} handleLogIn={this.props.handleLogIn} handleGoToRegister={this.handleGoToRegister} handleGoToEmailReminder={this.handleGoToEmailReminder}/>
-        }
-    }
-
-    handleGoToRegister = () => {
-        this.setState(
-            {
-                loginView: <Register session={this.props.session}/>
-            }
-        )
-    }
-
-    handleGoToEmailReminder = () => {
-        this.setState(
-            {
-                loginView: <Register session={this.props.session}/> //TODO: EMailReminder component still missing
-            }
-        )
-    }
-
     render() {
         if (this.props.session) {
             return (
@@ -36,9 +11,9 @@ class Main extends Component <any,any>{
             );
             
         } else {
-            return ( this.state.loginView );
+            return (
+            <Login session={this.props.session} handleLogIn={this.props.handleLogIn}/>)
         }
-      
     }
 }
 
