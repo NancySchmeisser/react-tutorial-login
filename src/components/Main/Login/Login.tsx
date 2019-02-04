@@ -4,8 +4,17 @@ import LoginView from './LoginView/LoginView';
 import RegisterView from './RegisterView/RegisterView';
 import EmailReminderView from './EmailReminderView/EmailReminderView';
 
-class Login extends Component<any, any>{
-    constructor(props: any){
+interface LoginState {
+    currentView: any,
+}
+
+interface LoginProps {
+    handleLogIn: any
+    session: any
+}
+
+class Login extends Component<LoginProps, LoginState>{
+    constructor(props: LoginProps){
         super(props);
 
         this.state= {
@@ -24,13 +33,11 @@ class Login extends Component<any, any>{
            case "SendEmailReminderView":
            this.setState ({ currentView : <EmailReminderView handleGoto={this.handleGoto}/>})
            break; 
-        
-        
        }
    }
 
     render() {
-        return this.state.CurrentView;
+        return this.state.currentView;
     }
 }
            

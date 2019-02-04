@@ -1,35 +1,43 @@
 import React, { Component } from 'react';
 import LoginService from '../../../../services/LoginService'
 
-class RegisterView extends Component<any, any>{
+interface RegisterViewState {
+    currentEmail: string,
+    currentPassword: string,
+    repeatedPassword: string,
+    currentMessage:  | undefined,
+}
+
+class RegisterView extends Component<any, RegisterViewState>{
     constructor(props: any) {
         super(props);
 
         this.state = {
             currentEmail: "",
             currentPassword: "",
-            repeatedPassowrd: "",
+            repeatedPassword: "",
             currentMessage: undefined,
         }
     }
 
     handleTryRegister = async () => {
 
-        if (this.state.currentPassword !== this.state.repeatPassword) {
-            this.setState({ currentMessage: "Passwords do not match" });
+        if (this.state.currentPassword !== this.state.repeatedPassword) {
+            this.setState({ currentMessage: "Passwords do not match" } as any);
             return;
         }
+
         const loginService = new LoginService();
         const registerResult = await loginService.tryRegister(this.state.currentEmail, this.state.currentPassword);
 
         if (!registerResult.success) {
-            this.setState({ currentMessage: registerResult });
+            this.setState({ currentMessage: registerResult } as any);
             return;
 
         }
         const loginResult = await loginService.tryLogin(this.state.currentEmail, this.state.currentPassword);
         if (!loginResult.success) {
-            this.setState({ currentMessage: loginResult.message });
+            this.setState({ currentMessage: loginResult.message } as any);
             return;
         }
         this.props.handleLogIn(this.state.currentEmail);

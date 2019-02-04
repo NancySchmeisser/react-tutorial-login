@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Sessioninfo from './Sessioninfo/Sessioninfo';
 
+interface NavigationProps {
+    session: any,
+    handleLogout: any
+}
 
-class Navigation extends Component <any,any> {
+class Navigation extends Component <NavigationProps,any> {
     render() {
         return (
 
@@ -19,7 +23,7 @@ class Navigation extends Component <any,any> {
                        
                     </ul>
                 </div>
-                <Sessioninfo session={this.props.session} onLogOut={this.props.onLogOut}/>
+                <Sessioninfo session={this.props.session} onLogOut={this.props.handleLogout}/>
             </nav>
         );
     }

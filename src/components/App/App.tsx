@@ -31,11 +31,10 @@ class App extends Component <any,any> {
       <div className="App">
        <Navigation session={this.state.session} handleLogout={this.handleLogout}/>
        <Main session={this.state.session} handleLogIn={this.handleLogIn}/>
-
-         
       </div>
         );
       }
     }
     
+
     export default App;
