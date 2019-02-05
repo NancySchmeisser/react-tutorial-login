@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import Navigation from '../Navigation/Navigation';
 import Main from '../Main/Main';
+import Session from '../../state/Session';
 
-class App extends Component <any,any> {
+interface AppState {
+  session: Session
+}
+
+class App extends Component<{}, AppState> {
   constructor(props: any) {
     super(props)
 
-    this.state={
-      session: null,
+    this.state = {
+
+      session: {
+        isLoggedIn: false,
+        currentUser: "",
+      },
     }
   }
 
-  handleLogout=() => {
-    this.setState({session:null})
+  handleLogout = () => {
+    this.setState({
+      session: {
+        isLoggedIn: false,
+        currentUser: "",
+      },
+    })
   }
-  
-  handleLogIn=(email: string) => {
+
+  handleLogIn = (email: string) => {
     this.setState(
       {
         session:
         {
+          isLoggedIn: true,
           currentUser: email + ""
         }
       }
@@ -29,12 +44,12 @@ class App extends Component <any,any> {
   render() {
     return (
       <div className="App">
-       <Navigation session={this.state.session} handleLogout={this.handleLogout}/>
-       <Main session={this.state.session} handleLogIn={this.handleLogIn}/>
+        <Navigation session={this.state.session} handleLogout={this.handleLogout} />
+        <Main session={this.state.session} handleLogIn={this.handleLogIn} />
       </div>
-        );
-      }
-    }
-    
+    );
+  }
+}
 
-    export default App;
+
+export default App;

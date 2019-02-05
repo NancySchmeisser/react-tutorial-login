@@ -31,7 +31,7 @@ class RegisterView extends Component<any, RegisterViewState>{
         const registerResult = await loginService.tryRegister(this.state.currentEmail, this.state.currentPassword);
 
         if (!registerResult.success) {
-            this.setState({ currentMessage: registerResult } as any);
+            this.setState({ currentMessage: registerResult.message } as any);
             return;
 
         }

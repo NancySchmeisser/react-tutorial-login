@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import Sessioninfo from './Sessioninfo/Sessioninfo';
+import LoginService from '../../services/LoginService';
+import Session from '../../state/Session';
 
 interface NavigationProps {
-    session: any,
-    handleLogout: any
+    session: Session,
+    handleLogout: () => void
 }
 
-class Navigation extends Component <NavigationProps,any> {
+class Navigation extends Component <NavigationProps, {}> {
+
+    handleTryLogOut = async () => {
+        const loginService = new LoginService();
+
+        const result = await loginService.tryLogout(this.props.session.currentUser);
+
+        if (result.success) {
+            this.props.handleLogout();
+        } else {
+            this.setState({ currentMessage: result.message });
+        }
+
+    }
+
     render() {
         return (
 
@@ -23,7 +39,7 @@ class Navigation extends Component <NavigationProps,any> {
                        
                     </ul>
                 </div>
-                <Sessioninfo session={this.props.session} onLogOut={this.props.handleLogout}/>
+                <Sessioninfo session={this.props.session} onLogOut={this.handleTryLogOut}/>
             </nav>
         );
     }

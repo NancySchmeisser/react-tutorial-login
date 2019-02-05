@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import Session from '../../../state/Session';
 
-
-class Sessioninfo extends Component <any,any>{
+interface SessionInfoProps {
+    session: Session,
+    onLogOut: () => void,
+}
+class Sessioninfo extends Component <SessionInfoProps,any>{
     render() {
-        if (this.props.session){
+        if (this.props.session.isLoggedIn){
             return (
                 <div className="Sessioninfo">
             {this.props.session.currentUser}
@@ -13,7 +17,7 @@ class Sessioninfo extends Component <any,any>{
         } else {
             return (
                 <div className="Sessioninfo">
-              Sessioninfo - logged out
+              Logged out
                 </div>
             );
         }
